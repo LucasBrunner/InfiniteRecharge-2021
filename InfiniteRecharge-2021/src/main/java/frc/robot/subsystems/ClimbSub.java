@@ -27,6 +27,16 @@ public class ClimbSub extends SubsystemBase {
 
   private static Timer timeTillEndgame = new Timer(75000);
 
+  @Override
+  public void periodic() {
+    if (timeTillEndgame.done() == true)
+    {
+      SmartDashboard.putData(Climber.deployLiftarm);
+    } else {
+      SmartDashboard.delete("Deploy Liftarm");
+    }
+  }
+
   public static void teleopStart()
   {
     timeTillEndgame.reset();
@@ -60,15 +70,5 @@ public class ClimbSub extends SubsystemBase {
   public static void stopClimbMotor()
   {
     winchMotor.set(ControlMode.PercentOutput, 0);
-  }
-
-  @Override
-  public void periodic() {
-    if (timeTillEndgame.done() == true)
-    {
-      SmartDashboard.putData(Climber.deployLiftarm);
-    } else {
-      SmartDashboard.delete("Deploy Liftarm");
-    }
   }
 }

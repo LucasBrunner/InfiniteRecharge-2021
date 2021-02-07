@@ -31,6 +31,9 @@ public class IntakeSub extends SubsystemBase
     moveMoter.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
   }
   
+  @Override
+  public void periodic() { }
+  
   public static void intakeControl()
   {
     if (intakeDeployed.flipOnTrue(OI.intakeDR()))
@@ -68,10 +71,5 @@ public class IntakeSub extends SubsystemBase
   public static void stopMoving()
   {
     moveMoter.set(TalonSRXControlMode.PercentOutput, 0);
-  }
-  
-  @Override
-  public void periodic()
-  {
   }
 }

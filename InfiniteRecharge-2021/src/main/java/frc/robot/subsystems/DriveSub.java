@@ -19,7 +19,6 @@ import frc.robot.maps.RobotMap.Sensors;
 
 public class DriveSub extends SubsystemBase
 {
-  
   // Motors
   private static final TalonSRX lefttMotor1 = new TalonSRX(DriveMotors.leftt1.ID());
   private static final TalonSRX lefttMotor2 = new TalonSRX(DriveMotors.leftt2.ID());
@@ -39,6 +38,15 @@ public class DriveSub extends SubsystemBase
   private static final DutyCycleEncoder lefttEncoder = new DutyCycleEncoder(Sensors.lefttDriveEncoder.Dio1());
   private static final DutyCycleEncoder rightEncoder = new DutyCycleEncoder(Sensors.rightDriveEncoder.Dio1());
   private static final AHRS navX = new AHRS(SPI.Port.kMXP);
+  
+  static
+  {
+    lefttEncoder.setDistancePerRotation(25.1);
+    rightEncoder.setDistancePerRotation(25.1);
+  }
+  
+  @Override
+  public void periodic() { }
   
   // Sensor Methods
   public static double lefttEncoder()
@@ -69,12 +77,6 @@ public class DriveSub extends SubsystemBase
   public static void resetGyro()
   {
     navX.reset();
-  }
-  
-  static
-  {
-    lefttEncoder.setDistancePerRotation(25.1);
-    rightEncoder.setDistancePerRotation(25.1);
   }
   
   /**
@@ -129,10 +131,5 @@ public class DriveSub extends SubsystemBase
   public static void stop()
   {
     setMotors(0, 0);
-  }
-  
-  @Override
-  public void periodic()
-  {
   }
 }

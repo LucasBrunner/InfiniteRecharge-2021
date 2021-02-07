@@ -34,6 +34,9 @@ public class PixySub extends SubsystemBase {
     frameHeight = pixy.getFrameHeight();
   }
 
+  @Override
+  public void periodic() { }
+
   public static Block getLargestBlock() { return largestBlock; }
   public static int getFrameWidth() { return frameWidth; }
   public static int getFrameHeight() { return frameHeight; }
@@ -64,10 +67,5 @@ public class PixySub extends SubsystemBase {
         }
       }
     }
-  }
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
   }
 }

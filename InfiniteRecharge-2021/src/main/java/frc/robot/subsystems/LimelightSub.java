@@ -10,34 +10,35 @@ package frc.robot.subsystems;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class LimelightSub extends SubsystemBase {
-
+public class LimelightSub extends SubsystemBase
+{
   private static boolean limelightOn = false;
-
+  
+  @Override
+  public void periodic()
+  {
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(limelightOn ? 0 : 1);
+  }
+  
   public static double getVerOffset()
   {
     return NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
   }
-
+  
   public static double getHorOffset()
   {
     return NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
   }
-
+  
   public static boolean switchLEDs()
   {
     limelightOn = !limelightOn;
     return limelightOn;
   }
-
+  
   public static boolean switchLEDs(boolean state)
   {
     limelightOn = state;
     return limelightOn;
-  }
-
-  @Override
-  public void periodic() {
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(limelightOn ? 0 : 1);
   }
 }
