@@ -149,7 +149,6 @@ public class Robot extends TimedRobot {
     Intake.run();
     ClimbSub.teleopStart();
     ClimbSub.stow();
-    // 
     Intake.deploy();
   }
 

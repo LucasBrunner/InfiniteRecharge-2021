@@ -37,6 +37,9 @@ public class ClimbSub extends SubsystemBase {
     }
   }
 
+  /**
+   * Resets certain values at the begining of a match;
+   */
   public static void teleopStart()
   {
     timeTillEndgame.reset();
@@ -51,20 +54,29 @@ public class ClimbSub extends SubsystemBase {
   {
     release.set(0.2);
   }
+
   public static void stow()
   {
     release.set(1);
   }
 
+  /**
+   * Controls the rotation of 
+   * @param power Climb motor's percentage output.
+   */
   public static void runClimbMotor(double power)
   {
     winchMotor.set(ControlMode.PercentOutput, -power);
   }
 
-  public static void reverseClimbMotor(double Power)
+  /**
+   * Limits the direction of the climb motor's rotation.
+   * @param power Climb motor's percentage output.
+   */
+  public static void reverseClimbMotor(double power)
   {
-    Power = Equations.clamp(Power, -1, 0);
-    winchMotor.set(ControlMode.PercentOutput, Power);
+    power = Equations.clamp(power, -1, 0);
+    winchMotor.set(ControlMode.PercentOutput, power);
   }
 
   public static void stopClimbMotor()

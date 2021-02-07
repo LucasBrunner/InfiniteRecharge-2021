@@ -37,7 +37,11 @@ public class PixySub extends SubsystemBase {
   @Override
   public void periodic() { }
 
+  /**
+   * @return The largest object visible in the most recent call of getBlocks().
+   */
   public static Block getLargestBlock() { return largestBlock; }
+
   public static int getFrameWidth() { return frameWidth; }
   public static int getFrameHeight() { return frameHeight; }
   
@@ -50,7 +54,11 @@ public class PixySub extends SubsystemBase {
     return state >= 0;
   }
   
-  public static void getBlocks()
+  /**
+   * Reads all of the objects visible by the camera.
+   * @return The largest object visible in this read.
+   */
+  public static Block getBlocks()
   {
     blocks = null;
     largestBlock = null;
@@ -67,5 +75,6 @@ public class PixySub extends SubsystemBase {
         }
       }
     }
+    return largestBlock;
   }
 }
