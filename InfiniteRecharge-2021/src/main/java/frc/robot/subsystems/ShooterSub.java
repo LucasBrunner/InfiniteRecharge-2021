@@ -40,6 +40,9 @@ public class ShooterSub extends SubsystemBase
     return shooter1.getEncoder().getVelocity();
   }
   
+  /**
+   * should be a command
+   */
   public static void shooterControl()
   {
     if (OI.startShooter() == true)

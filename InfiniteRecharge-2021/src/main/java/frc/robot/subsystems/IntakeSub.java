@@ -34,6 +34,9 @@ public class IntakeSub extends SubsystemBase
   @Override
   public void periodic() { }
   
+  /**
+   * Should become a command.
+   */
   public static void intakeControl()
   {
     if (intakeDeployed.flipOnTrue(OI.intakeDR()))
@@ -48,11 +51,18 @@ public class IntakeSub extends SubsystemBase
     }
   }
   
+  /**
+   * Gets the current position of the intake.
+   */
   public static double getPos()
   {
     return moveMoter.getSelectedSensorPosition();
   }
   
+  /**
+   * Sets the power of the intake's wheels.
+   * @param power Intake wheel's percentage output.
+   */
   public static void runIntake(double power)
   {
     runMoter.set(VictorSPXControlMode.PercentOutput, power * 0.65);
@@ -63,6 +73,10 @@ public class IntakeSub extends SubsystemBase
     runMoter.set(VictorSPXControlMode.PercentOutput, 0);
   }
   
+  /**
+   * Sets power of the motor which moves the intake up/down.
+   * @param power Intake movement motor's percentage power.
+   */
   public static void moveIntake(double power)
   {
     moveMoter.set(TalonSRXControlMode.PercentOutput, power);

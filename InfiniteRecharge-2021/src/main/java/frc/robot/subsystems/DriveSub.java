@@ -47,23 +47,38 @@ public class DriveSub extends SubsystemBase
   
   @Override
   public void periodic() { }
-  
-  // Sensor Methods
+
+  /**
+   * Gets the value of the left encoder in rotations.
+   * @return Value of the left encoder.
+   */
   public static double lefttEncoder()
   {
     return lefttEncoder.get();
   }
   
+  /**
+   * Gets the value of the right encoder in rotations.
+   * @return Value of the right encoder.
+   */
   public static double rightEncoder()
   {
     return rightEncoder.get();
   }
-  
+
+  /**
+   * Gets the value of the left encoder in inches.
+   * @return Value of the left encoder.
+   */
   public static double lefttEncoderDistance()
   {
-    return lefttEncoder.getDistance();
+    return rightEncoder.getDistance();
   }
-  
+
+  /**
+   * Gets the value of the right encoder in inches.
+   * @return Value of the right encoder.
+   */
   public static double rightEncoderDistance()
   {
     return rightEncoder.getDistance();
@@ -80,30 +95,31 @@ public class DriveSub extends SubsystemBase
   }
   
   /**
-   * @param xSpeed
+   * Arcade-style drivetrain input.
+   * @param xPower
    *                    The robot's speed along the X axis [-1.0..1.0]. Forward is
    *                    positive.
    * @param zRotation
    *                    The robot's rotation rate around the Z axis [-1.0..1.0].
    *                    Clockwise is positive.
    */
-  public static void arcadeDrive(double xpower, double zRotation)
+  public static void arcadeDrive(double xPower, double zRotation)
   {
     double lefttOutput = 0;
     double rightOutput = 0;
     
-    double maxInput = Math.copySign(Math.max(Math.abs(xpower), Math.abs(zRotation)), xpower);
+    double maxInput = Math.copySign(Math.max(Math.abs(xPower), Math.abs(zRotation)), xPower);
     
-    if (xpower >= 0.0)
+    if (xPower >= 0.0)
     {
       // First quadrant, else second quadrant
       if (zRotation >= 0.0)
       {
         lefttOutput = maxInput;
-        rightOutput = xpower - zRotation;
+        rightOutput = xPower - zRotation;
       } else
       {
-        lefttOutput = xpower + zRotation;
+        lefttOutput = xPower + zRotation;
         rightOutput = maxInput;
       }
     } else
@@ -111,18 +127,22 @@ public class DriveSub extends SubsystemBase
       // Third quadrant, else fourth quadrant
       if (zRotation >= 0.0)
       {
-        lefttOutput = xpower + zRotation;
+        lefttOutput = xPower + zRotation;
         rightOutput = maxInput;
       } else
       {
         lefttOutput = maxInput;
-        rightOutput = xpower - zRotation;
+        rightOutput = xPower - zRotation;
       }
     }
     
     setMotors(lefttOutput, rightOutput);
   }
-  
+  /**
+   * Tank-style drivetrain input.
+   * @param leftt Speed of the left wheels. Forward is positive.
+   * @param right Speed of the right wheels. Forward is positive.
+   */
   public static void tankDrive(double leftt, double right)
   {
     setMotors(leftt, right);

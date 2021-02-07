@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.OI;
+import frc.robot.classes.Switch;
 import frc.robot.commands.intake.Run;
 import frc.robot.maps.RobotMap;
 
@@ -27,7 +28,7 @@ public class StorageSub extends SubsystemBase
   
   private static double offSet = 0.7;
   private static int goal = 0;
-  private static boolean goalJustUpdated = false;
+  private static Switch goalUpdated = new Switch(false);
   
   static
   {
@@ -48,6 +49,9 @@ public class StorageSub extends SubsystemBase
     }
   }
   
+  /**
+   * should be a command
+   */
   public static void storageControl() // Manual storage control
   {
     int storageDirection = OI.storageManual();
@@ -67,6 +71,10 @@ public class StorageSub extends SubsystemBase
     return !ballDetector.get();
   }
   
+  /**
+   * Set the location (rotation value) for the storage wheel to move to.
+   * @param newGoal New rotation value.
+   */
   public static void setGoal(int newGoal)
   {
     goal = newGoal;
@@ -78,27 +86,32 @@ public class StorageSub extends SubsystemBase
   }
   
   /**
-   * will not update again until value changes. For manual control purposes
+   * Adds a value to the current storage wheel location goal.
    * 
-   * @param amount
+   * @param amount The amount to add to the goal.
    */
   public static void updateGoal(int amount)
   {
-    if (amount != 0 && goalJustUpdated == false)
+    if (goalUpdated.flipOnTrue(amount != 0))
     {
-      goalJustUpdated = true;
       goal += amount;
-    } else if (amount == 0)
-    {
-      goalJustUpdated = false;
     }
   }
   
+  /**
+   * Adds a value to the wheel's offset. Useful for recalibrating the storage wheel.
+   * 
+   * @param amount the amount to add to the wheel's offset.
+   */
   public static void updateOffset(double amount)
   {
     offSet += amount;
   }
   
+  /**
+   * Sets the power of the feeder wheel.
+   * @param power Feeder wheel's percentage output.
+   */
   public static void setFeederMotor(double power)
   {
     feederMotor.set(VictorSPXControlMode.PercentOutput, power);
@@ -114,6 +127,11 @@ public class StorageSub extends SubsystemBase
     return encoder.getDistance();
   }
   
+  
+  /**
+   * Sets the power of the storage wheel's motor.
+   * @param power Storage wheel motor's percentage output.
+   */
   public static void storagePower(double power)
   {
     storageMotor.set(VictorSPXControlMode.PercentOutput, power * 0.25);
