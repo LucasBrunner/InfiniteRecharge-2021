@@ -16,10 +16,6 @@ import frc.robot.comcon.Shooter;
 import frc.robot.maps.RobotMap;
 
 public class ShooterSub extends SubsystemBase {
-  /**
-   * Creates a new Shooter.
-   */
-  public ShooterSub() { }
 
   private static final CANSparkMax shooter1 = new CANSparkMax(RobotMap.SubsystemMotors.shooter1.ID(), MotorType.kBrushless);
   private static final CANSparkMax shooter2 = new CANSparkMax(RobotMap.SubsystemMotors.shooter2.ID(), MotorType.kBrushless);

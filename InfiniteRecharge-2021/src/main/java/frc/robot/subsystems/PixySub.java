@@ -26,12 +26,9 @@ public class PixySub extends SubsystemBase {
   
   private static Block largestBlock;
 
-  /**
-   * Creates a new Pixy2.
-   */
-  public PixySub(LinkType spi) 
+  static
   {
-    pixy = Pixy2.createInstance(spi);
+    pixy = Pixy2.createInstance(LinkType.SPI);
     state = pixy.init();
     frameWidth = pixy.getFrameWidth();
     frameHeight = pixy.getFrameHeight();

@@ -18,10 +18,8 @@ import frc.robot.commands.intake.Run;
 import frc.robot.subsystems.LimelightSub;
 import frc.robot.subsystems.ShooterSub;
 
-public class ShootWithVision extends CommandBase {
-
-  private ShooterSub shooterSub = RobotContainer.shooterSub;
-
+public class ShootWithVision extends CommandBase 
+{
   public boolean atSpeed = false;
   private Timer atSpeedTimer = new Timer(100);
   private Timer speedUpTimer = new Timer(2000);
@@ -32,7 +30,7 @@ public class ShootWithVision extends CommandBase {
    * Creates a new ShootWithVision.
    */
   public ShootWithVision() {
-    addRequirements(shooterSub);
+    addRequirements(RobotContainer.shooterSub);
 
     if (Robot.testMode)
     {

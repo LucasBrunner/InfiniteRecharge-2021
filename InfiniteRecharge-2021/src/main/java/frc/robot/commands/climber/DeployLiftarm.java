@@ -13,33 +13,31 @@ import frc.robot.RobotContainer;
 import frc.robot.classes.Timer;
 import frc.robot.comcon.Intake;
 import frc.robot.subsystems.ClimbSub;
-import frc.robot.subsystems.IntakeSub;
 
-public class DeployLiftarm extends CommandBase {
-
-  private final ClimbSub climbSub = RobotContainer.climbSub;
-  private final IntakeSub intakeSub = RobotContainer.intakeSub;
-
+public class DeployLiftarm extends CommandBase
+{
   private Timer climbHesitate = new Timer(1000);
-
+  
   /**
    * Creates a new DeployLiftarm.
    */
   public DeployLiftarm() {
-    addRequirements(climbSub);
-    addRequirements(intakeSub);
+    addRequirements(RobotContainer.climbSub);
+    addRequirements(RobotContainer.intakeSub);
   }
-
+  
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
+  public void initialize()
+  {
     climbHesitate.reset();
     Intake.deploy();
   }
-
+  
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
+  public void execute()
+  {
     if (climbHesitate.done() == true)
     {
       ClimbSub.deploy();
@@ -47,16 +45,18 @@ public class DeployLiftarm extends CommandBase {
     }
     
   }
-
+  
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  public void end(boolean interrupted)
+  {
     ClimbSub.stow();
   }
-
+  
   // Returns true when the command should end.
   @Override
-  public boolean isFinished() {
+  public boolean isFinished()
+  {
     return false;
   }
 }

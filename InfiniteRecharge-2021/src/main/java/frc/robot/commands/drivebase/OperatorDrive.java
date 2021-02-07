@@ -15,13 +15,12 @@ import frc.robot.subsystems.DriveSub;
 
 public class OperatorDrive extends CommandBase 
 {
-  private DriveSub driveSub = RobotContainer.driveSub;
 
   /**
    * Creates a new OperatorDrive.
    */
   public OperatorDrive() {
-    addRequirements(driveSub);
+    addRequirements(RobotContainer.driveSub);
   }
 
   // Called when the command is initially scheduled.

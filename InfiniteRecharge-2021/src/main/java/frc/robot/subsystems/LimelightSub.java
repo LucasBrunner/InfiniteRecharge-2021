@@ -14,13 +14,6 @@ public class LimelightSub extends SubsystemBase {
 
   private static boolean limelightOn = false;
 
-  /**
-   * Creates a new LimelightSub.
-   */
-  public LimelightSub() {
-
-  }
-
   public static double getVerOffset()
   {
     return NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);

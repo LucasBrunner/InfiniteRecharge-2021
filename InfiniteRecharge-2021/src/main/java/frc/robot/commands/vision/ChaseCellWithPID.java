@@ -16,9 +16,7 @@ import frc.robot.subsystems.DriveSub;
 import frc.robot.subsystems.PixySub;
 
 public class ChaseCellWithPID extends CommandBase
-{
-  private DriveSub driveSub = RobotContainer.driveSub;
-  
+{  
   private Block largestBlock;
   
   private PIDController zPID = new PIDController(0.4, 1000000, 0);
@@ -31,7 +29,7 @@ public class ChaseCellWithPID extends CommandBase
    * Creates a new ChaseCellWithPID.
    */
   public ChaseCellWithPID() {
-    addRequirements(driveSub);
+    addRequirements(RobotContainer.driveSub);
   }
   
   // Called when the command is initially scheduled.

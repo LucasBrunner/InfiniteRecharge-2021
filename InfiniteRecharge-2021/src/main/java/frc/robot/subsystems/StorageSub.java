@@ -92,7 +92,7 @@ public class StorageSub extends SubsystemBase {
   /**
    * Creates a new Storage.
    */
-  public StorageSub() {
+  static {
     encoder.setDistancePerRotation(1);
   }
   

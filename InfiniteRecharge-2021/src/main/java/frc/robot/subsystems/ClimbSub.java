@@ -26,10 +26,6 @@ public class ClimbSub extends SubsystemBase {
   private static final Servo release = new Servo(RobotMap.PWMDevices.liftarmRelease.PWM());
 
   private static Timer timeTillEndgame = new Timer(75000);
-  
-  public ClimbSub() 
-  {
-  }
 
   public static void teleopStart()
   {

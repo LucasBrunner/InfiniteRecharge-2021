@@ -21,19 +21,16 @@ import frc.robot.maps.RobotMap;
 
 public class IntakeSub extends SubsystemBase
 {
-  private static final VictorSPX runMoter  = new VictorSPX(RobotMap.SubsystemMotors.suck.ID());
+  private static final VictorSPX runMoter = new VictorSPX(RobotMap.SubsystemMotors.suck.ID());
   private static final TalonSRX moveMoter = new TalonSRX(RobotMap.SubsystemMotors.intake.ID());
   
   public static Switch intakeDeployed = new Switch(false);
-
-  /**
-   * Creates a new Intake.
-   */
-  public IntakeSub() 
+  
+  static
   {
     moveMoter.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
   }
-
+  
   public static void intakeControl()
   {
     if (intakeDeployed.flipOnTrue(OI.intakeDR()))
@@ -41,37 +38,40 @@ public class IntakeSub extends SubsystemBase
       if (intakeDeployed.state())
       {
         Intake.deploy();
-      } else {
+      } else
+      {
         Intake.retract();
       }
     }
   }
-
+  
   public static double getPos()
   {
     return moveMoter.getSelectedSensorPosition();
   }
-
+  
   public static void runIntake(double power)
   {
     runMoter.set(VictorSPXControlMode.PercentOutput, power * 0.65);
   }
-
+  
   public static void stopRunning()
   {
     runMoter.set(VictorSPXControlMode.PercentOutput, 0);
   }
-
+  
   public static void moveIntake(double power)
   {
     moveMoter.set(TalonSRXControlMode.PercentOutput, power);
   }
-
+  
   public static void stopMoving()
   {
     moveMoter.set(TalonSRXControlMode.PercentOutput, 0);
   }
   
   @Override
-  public void periodic() { }
+  public void periodic()
+  {
+  }
 }
