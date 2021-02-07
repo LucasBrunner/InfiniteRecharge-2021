@@ -127,6 +127,7 @@ public class StorageSub extends SubsystemBase
     return encoder.getDistance();
   }
   
+  
   /**
    * Sets the power of the storage wheel's motor.
    * @param power Storage wheel motor's percentage output.
