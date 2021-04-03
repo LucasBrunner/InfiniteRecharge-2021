@@ -38,7 +38,7 @@ public class TrackOuterGoal extends CommandBase {
     addRequirements(RobotContainer.driveSub);
 
     steeringPID.setSetpoint(0);
-    steeringPID.setTolerance(2);
+    steeringPID.setTolerance(3);
     steeringPID.setIntegratorRange(-0.1, 0.1);
   }
 

@@ -41,8 +41,10 @@ public class ReachGoal extends CommandBase {
     }
     double power = PID.calculate(StorageSub.getEncoderPosition());
 
-    StorageSub.storagePower(power);
+    StorageSub.storagePower(power * powerFun);
   }
+
+  static double powerFun = 1;
 
   // Called once the command ends or is interrupted.
   @Override

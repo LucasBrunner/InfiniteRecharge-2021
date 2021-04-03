@@ -8,6 +8,7 @@
 package frc.robot.commands.storage;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.classes.Timer;
 import frc.robot.comcon.Intake;
 import frc.robot.commands.intake.Run;
 import frc.robot.commands.shooter.EmptyStorage;
@@ -28,7 +29,9 @@ public class EmptyThroughShooter extends CommandBase {
   @Override
   public void initialize() {
     Intake.stop();
+    ReachGoal.powerFun = 0.5;
     StorageSub.setGoal(StorageSub.getGoal() + 6);
+    forceEnd.reset();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -36,6 +39,8 @@ public class EmptyThroughShooter extends CommandBase {
   public void execute() {
     StorageSub.setFeederMotor(-0.75);
   }
+
+  Timer forceEnd = new Timer(5000);
 
   // Called once the command ends or is interrupted.
   @Override
@@ -45,7 +50,8 @@ public class EmptyThroughShooter extends CommandBase {
     AutoShooter.FinishedShooting = true;
     TrackOuterGoal.FinishedShooting = true;
     EmptyStorage.finishedShooting = true;
-    Run.doStorage.set(true);
+    Run.doStorage.set(Run.doStorage.state());
+    ReachGoal.powerFun = 1;
   }
 
   // Returns true when the command should end.
@@ -55,6 +61,6 @@ public class EmptyThroughShooter extends CommandBase {
 
     if ((int) StorageSub.getGoal() == (int) StorageSub.getEncoderPosition()) { output = true; }
 
-    return output;
+    return output || forceEnd.done();
   }
 }

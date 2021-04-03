@@ -174,6 +174,7 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putData(emptyStorage);
     SmartDashboard.putNumber("Limelight X", LimelightSub.getHorOffset());
+    SmartDashboard.putNumber("Limelight Y", LimelightSub.getVerOffset());
     
     SmartDashboard.putData(Climber.deployLiftarm);
     if (OI.deployLifer() && OI.advancedMode())
