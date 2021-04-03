@@ -21,7 +21,7 @@ public class EmptyStorage extends CommandBase {
     addRequirements(RobotContainer.shooterSub);
   }
 
-  private static Timer launchDelay = new Timer(500);
+  private static Timer launchDelay = new Timer(1000);
   public static boolean finishedShooting = false;
   private static boolean once = false;
 
@@ -36,7 +36,7 @@ public class EmptyStorage extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    ShooterSub.spin(0.35);
+    ShooterSub.spin(0.55);
     if (launchDelay.done() && !once)
     {
       Storage.emptyThroughShooter();

@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import javax.swing.text.StyledEditorKit.BoldAction;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -157,6 +159,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+
     if (Climber.deployLiftarm.isScheduled() == false) {
       IntakeSub.intakeControl();
       StorageSub.storageControl();
