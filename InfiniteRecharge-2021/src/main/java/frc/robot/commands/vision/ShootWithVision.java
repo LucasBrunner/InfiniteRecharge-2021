@@ -15,6 +15,7 @@ import frc.robot.RobotContainer;
 import frc.robot.classes.Equations;
 import frc.robot.classes.Timer;
 import frc.robot.commands.intake.Run;
+import frc.robot.commands.storage.EmptyThroughShooter;
 import frc.robot.subsystems.LimelightSub;
 import frc.robot.subsystems.ShooterSub;
 
@@ -49,6 +50,7 @@ public class ShootWithVision extends CommandBase
     
     shooterPID.setTolerance(5, 5);
     shooterPID.setIntegratorRange(-0.1, 0.1);
+    EmptyThroughShooter.resumeStorage = Run.doStorage.state();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -69,7 +71,7 @@ public class ShootWithVision extends CommandBase
     else if (yValue > 10) { GoalRPM = 2185; feedForward = 0.390; }
     else if (yValue > 05) { GoalRPM = 2195; feedForward = 0.395; }
     else if (yValue > 00) { GoalRPM = 2260; feedForward = 0.395; }
-    GoalRPM += 50;
+    GoalRPM += 25;
     shooterPID.setSetpoint(GoalRPM);
     
     double t = shooterPID.calculate(ShooterSub.getVelocity());

@@ -41,6 +41,7 @@ public class EmptyThroughShooter extends CommandBase {
   }
 
   Timer forceEnd = new Timer(5000);
+  public static boolean resumeStorage = false;
 
   // Called once the command ends or is interrupted.
   @Override
@@ -50,7 +51,7 @@ public class EmptyThroughShooter extends CommandBase {
     AutoShooter.FinishedShooting = true;
     TrackOuterGoal.FinishedShooting = true;
     EmptyStorage.finishedShooting = true;
-    Run.doStorage.set(Run.doStorage.state());
+    Run.doStorage.set(true);
     ReachGoal.powerFun = 1;
   }
 
