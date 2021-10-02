@@ -183,11 +183,13 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Limelight Y", LimelightSub.getVerOffset());
     SmartDashboard.putBoolean("Do storage", Run.doStorage.state());
     
+    /*
     SmartDashboard.putData(Climber.deployLiftarm);
     if (OI.deployLifer() && OI.advancedMode())
     {
       Climber.deploy();
     }
+    */
   }
 
   private SimpleShoot soot = new SimpleShoot();
