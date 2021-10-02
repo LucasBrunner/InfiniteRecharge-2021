@@ -19,6 +19,7 @@ import frc.robot.classes.Timer;
 import frc.robot.comcon.Climber;
 import frc.robot.comcon.Intake;
 import frc.robot.comcon.Shooter;
+import frc.robot.commands.intake.Run;
 import frc.robot.commands.shooter.EmptyStorage;
 import frc.robot.commands.shooter.SimpleShoot;
 import frc.robot.commands.vision.AutoShooter;
@@ -152,6 +153,11 @@ public class Robot extends TimedRobot {
     ClimbSub.teleopStart();
     ClimbSub.stow();
     Intake.deploy();
+
+    if (OI.advancedMode())
+    {
+      Shooter.toggleAutoShooter();
+    }
   }
 
   /**
@@ -175,6 +181,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData(emptyStorage);
     SmartDashboard.putNumber("Limelight X", LimelightSub.getHorOffset());
     SmartDashboard.putNumber("Limelight Y", LimelightSub.getVerOffset());
+    SmartDashboard.putBoolean("Do storage", Run.doStorage.state());
     
     SmartDashboard.putData(Climber.deployLiftarm);
     if (OI.deployLifer() && OI.advancedMode())

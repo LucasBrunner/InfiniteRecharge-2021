@@ -51,13 +51,14 @@ public class ShootWithVision extends CommandBase
     shooterPID.setTolerance(5, 5);
     shooterPID.setIntegratorRange(-0.1, 0.1);
     EmptyThroughShooter.resumeStorage = Run.doStorage.state();
+    
+    Run.doStorage.set(false);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     
-    Run.doStorage.set(false);
 
     // shooterPID.setP(SmartDashboard.getNumber("Shooter PID - P", 0.00045));
     // shooterPID.setI(SmartDashboard.getNumber("Shooter PID - I", 0.0010));

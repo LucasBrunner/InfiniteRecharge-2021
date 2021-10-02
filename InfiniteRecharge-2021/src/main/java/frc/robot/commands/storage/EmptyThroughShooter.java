@@ -7,6 +7,7 @@
 
 package frc.robot.commands.storage;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.classes.Timer;
 import frc.robot.comcon.Intake;
@@ -51,7 +52,7 @@ public class EmptyThroughShooter extends CommandBase {
     AutoShooter.FinishedShooting = true;
     TrackOuterGoal.FinishedShooting = true;
     EmptyStorage.finishedShooting = true;
-    Run.doStorage.set(true);
+    Run.doStorage.set(resumeStorage);
     ReachGoal.powerFun = 1;
   }
 
