@@ -72,7 +72,7 @@ public class ShootWithVision extends CommandBase
     else if (yValue > 10) { GoalRPM = 2185; feedForward = 0.390; }
     else if (yValue > 05) { GoalRPM = 2195; feedForward = 0.395; }
     else if (yValue > 00) { GoalRPM = 2260; feedForward = 0.395; }
-    GoalRPM += 25;
+    GoalRPM += -15;
     shooterPID.setSetpoint(GoalRPM);
     
     double t = shooterPID.calculate(ShooterSub.getVelocity());

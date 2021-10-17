@@ -87,6 +87,8 @@ public class Robot extends TimedRobot {
     {
       System.out.println("Auto mode = " + doAuto.state());
     }
+
+    SmartDashboard.putNumber("Arm position", IntakeSub.getPos());
   }
 
   /**
@@ -96,6 +98,7 @@ public class Robot extends TimedRobot {
   public void disabledInit() {
     Intake.stop();
     testMode = false;
+    SmartDashboard.putData(switchLEDs);
   }
 
   @Override
@@ -152,7 +155,7 @@ public class Robot extends TimedRobot {
     Intake.run();
     ClimbSub.teleopStart();
     ClimbSub.stow();
-    Intake.deploy();
+    // Intake.deploy();
 
     if (OI.advancedMode())
     {
