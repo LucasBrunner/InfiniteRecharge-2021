@@ -30,13 +30,20 @@ public class AutoShooter extends CommandBase {
 
   private double steeringPower = 0;
 
+<<<<<<< HEAD
   private DriveSub driveSub = RobotContainer.driveSub;
 
+=======
+>>>>>>> remotes/origin/DEV
   /**
    * Creates a new TrackOuterGoal.
    */
   public AutoShooter() {
+<<<<<<< HEAD
     addRequirements(driveSub);
+=======
+    addRequirements(RobotContainer.driveSub);
+>>>>>>> remotes/origin/DEV
 
     steeringPID.setSetpoint(0);
     steeringPID.setTolerance(2);

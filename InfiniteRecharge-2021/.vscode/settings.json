@@ -13,5 +13,10 @@
     "**/.settings": true,
     "**/.factorypath": true,
     "**/*~": true
+<<<<<<< HEAD
   }
+=======
+  },
+  "java.format.settings.url": "C:\\Users\\Lucas\\Documents\\EclipseAllmanFormatter.xml"
+>>>>>>> remotes/origin/DEV
 }

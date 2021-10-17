@@ -15,8 +15,11 @@ import frc.robot.subsystems.DriveSub;
 
 public class Spin extends CommandBase
 {
+<<<<<<< HEAD
   private DriveSub driveSub = RobotContainer.driveSub;
 
+=======
+>>>>>>> remotes/origin/DEV
   // Sensor zero values
   private double lefttEncoderZero;
   private double rightEncoderZero;
@@ -38,7 +41,11 @@ public class Spin extends CommandBase
   private Timer settlingTime = new Timer(500);
   
   public Spin(double angle) {
+<<<<<<< HEAD
     addRequirements(driveSub);
+=======
+    addRequirements(RobotContainer.driveSub);
+>>>>>>> remotes/origin/DEV
     drivePID.setSetpoint(0);
     turnPID.setSetpoint(turn);
   }

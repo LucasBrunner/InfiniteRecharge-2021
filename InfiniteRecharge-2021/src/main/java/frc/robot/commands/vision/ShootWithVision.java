@@ -15,6 +15,7 @@ import frc.robot.RobotContainer;
 import frc.robot.classes.Equations;
 import frc.robot.classes.Timer;
 import frc.robot.commands.intake.Run;
+<<<<<<< HEAD
 import frc.robot.subsystems.LimelightSub;
 import frc.robot.subsystems.ShooterSub;
 
@@ -22,6 +23,14 @@ public class ShootWithVision extends CommandBase {
 
   private ShooterSub shooterSub = RobotContainer.shooterSub;
 
+=======
+import frc.robot.commands.storage.EmptyThroughShooter;
+import frc.robot.subsystems.LimelightSub;
+import frc.robot.subsystems.ShooterSub;
+
+public class ShootWithVision extends CommandBase 
+{
+>>>>>>> remotes/origin/DEV
   public boolean atSpeed = false;
   private Timer atSpeedTimer = new Timer(100);
   private Timer speedUpTimer = new Timer(2000);
@@ -32,7 +41,11 @@ public class ShootWithVision extends CommandBase {
    * Creates a new ShootWithVision.
    */
   public ShootWithVision() {
+<<<<<<< HEAD
     addRequirements(shooterSub);
+=======
+    addRequirements(RobotContainer.shooterSub);
+>>>>>>> remotes/origin/DEV
 
     if (Robot.testMode)
     {
@@ -51,13 +64,22 @@ public class ShootWithVision extends CommandBase {
     
     shooterPID.setTolerance(5, 5);
     shooterPID.setIntegratorRange(-0.1, 0.1);
+<<<<<<< HEAD
+=======
+    EmptyThroughShooter.resumeStorage = Run.doStorage.state();
+    
+    Run.doStorage.set(false);
+>>>>>>> remotes/origin/DEV
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     
+<<<<<<< HEAD
     Run.doStorage.set(false);
+=======
+>>>>>>> remotes/origin/DEV
 
     // shooterPID.setP(SmartDashboard.getNumber("Shooter PID - P", 0.00045));
     // shooterPID.setI(SmartDashboard.getNumber("Shooter PID - I", 0.0010));
@@ -70,7 +92,12 @@ public class ShootWithVision extends CommandBase {
     else if (yValue > 15) { GoalRPM = 2175; feedForward = 0.387; }
     else if (yValue > 10) { GoalRPM = 2185; feedForward = 0.390; }
     else if (yValue > 05) { GoalRPM = 2195; feedForward = 0.395; }
+<<<<<<< HEAD
     else if (yValue > 00) { GoalRPM = 2215; feedForward = 0.395; }
+=======
+    else if (yValue > 00) { GoalRPM = 2260; feedForward = 0.395; }
+    GoalRPM += -15;
+>>>>>>> remotes/origin/DEV
     shooterPID.setSetpoint(GoalRPM);
     
     double t = shooterPID.calculate(ShooterSub.getVelocity());

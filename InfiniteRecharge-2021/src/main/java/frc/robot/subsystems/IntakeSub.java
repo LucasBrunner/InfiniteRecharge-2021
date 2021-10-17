@@ -21,6 +21,7 @@ import frc.robot.maps.RobotMap;
 
 public class IntakeSub extends SubsystemBase
 {
+<<<<<<< HEAD
   private static final VictorSPX runMoter  = new VictorSPX(RobotMap.SubsystemMotors.suck.ID());
   private static final TalonSRX moveMoter = new TalonSRX(RobotMap.SubsystemMotors.intake.ID());
   
@@ -34,6 +35,24 @@ public class IntakeSub extends SubsystemBase
     moveMoter.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
   }
 
+=======
+  private static final VictorSPX runMoter = new VictorSPX(RobotMap.SubsystemMotors.suck.ID());
+  private static final TalonSRX moveMoter = new TalonSRX(RobotMap.SubsystemMotors.intake.ID());
+  
+  public static Switch intakeDeployed = new Switch(false);
+  
+  static
+  {
+    moveMoter.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
+  }
+  
+  @Override
+  public void periodic() { }
+  
+  /**
+   * Should become a command.
+   */
+>>>>>>> remotes/origin/DEV
   public static void intakeControl()
   {
     if (intakeDeployed.flipOnTrue(OI.intakeDR()))
@@ -41,37 +60,76 @@ public class IntakeSub extends SubsystemBase
       if (intakeDeployed.state())
       {
         Intake.deploy();
+<<<<<<< HEAD
       } else {
+=======
+      } else
+      {
+>>>>>>> remotes/origin/DEV
         Intake.retract();
       }
     }
   }
+<<<<<<< HEAD
 
+=======
+  
+  /**
+   * Gets the current position of the intake.
+   */
+>>>>>>> remotes/origin/DEV
   public static double getPos()
   {
     return moveMoter.getSelectedSensorPosition();
   }
+<<<<<<< HEAD
 
+=======
+  
+  /**
+   * Sets the power of the intake's wheels.
+   * @param power Intake wheel's percentage output.
+   */
+>>>>>>> remotes/origin/DEV
   public static void runIntake(double power)
   {
     runMoter.set(VictorSPXControlMode.PercentOutput, power * 0.65);
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> remotes/origin/DEV
   public static void stopRunning()
   {
     runMoter.set(VictorSPXControlMode.PercentOutput, 0);
   }
+<<<<<<< HEAD
 
+=======
+  
+  /**
+   * Sets power of the motor which moves the intake up/down.
+   * @param power Intake movement motor's percentage power.
+   */
+>>>>>>> remotes/origin/DEV
   public static void moveIntake(double power)
   {
     moveMoter.set(TalonSRXControlMode.PercentOutput, power);
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> remotes/origin/DEV
   public static void stopMoving()
   {
     moveMoter.set(TalonSRXControlMode.PercentOutput, 0);
   }
+<<<<<<< HEAD
   
   @Override
   public void periodic() { }
+=======
+>>>>>>> remotes/origin/DEV
 }

@@ -12,7 +12,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.comcon.Drive;
 import frc.robot.comcon.Storage;
+<<<<<<< HEAD
 import frc.robot.pixy.Pixy2;
+=======
+>>>>>>> remotes/origin/DEV
 import frc.robot.subsystems.ClimbSub;
 import frc.robot.subsystems.DriveSub;
 import frc.robot.subsystems.IntakeSub;
@@ -33,7 +36,11 @@ public class RobotContainer
   // The robot's subsystems and commands are defined here...
   private final Command m_autoCommand = null;
   
+<<<<<<< HEAD
   public static final PixySub pixySub = new PixySub(Pixy2.LinkType.SPI);
+=======
+  public static final PixySub pixySub = new PixySub();
+>>>>>>> remotes/origin/DEV
   public static final DriveSub driveSub = new DriveSub();
   public static final IntakeSub intakeSub = new IntakeSub();
   public static final ShooterSub shooterSub = new ShooterSub();

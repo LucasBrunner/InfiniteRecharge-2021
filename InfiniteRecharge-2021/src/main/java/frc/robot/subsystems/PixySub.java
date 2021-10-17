@@ -26,18 +26,35 @@ public class PixySub extends SubsystemBase {
   
   private static Block largestBlock;
 
+<<<<<<< HEAD
   /**
    * Creates a new Pixy2.
    */
   public PixySub(LinkType spi) 
   {
     pixy = Pixy2.createInstance(spi);
+=======
+  static
+  {
+    pixy = Pixy2.createInstance(LinkType.SPI);
+>>>>>>> remotes/origin/DEV
     state = pixy.init();
     frameWidth = pixy.getFrameWidth();
     frameHeight = pixy.getFrameHeight();
   }
 
+<<<<<<< HEAD
   public static Block getLargestBlock() { return largestBlock; }
+=======
+  @Override
+  public void periodic() { }
+
+  /**
+   * @return The largest object visible in the most recent call of getBlocks().
+   */
+  public static Block getLargestBlock() { return largestBlock; }
+
+>>>>>>> remotes/origin/DEV
   public static int getFrameWidth() { return frameWidth; }
   public static int getFrameHeight() { return frameHeight; }
   
@@ -50,7 +67,15 @@ public class PixySub extends SubsystemBase {
     return state >= 0;
   }
   
+<<<<<<< HEAD
   public static void getBlocks()
+=======
+  /**
+   * Reads all of the objects visible by the camera.
+   * @return The largest object visible in this read.
+   */
+  public static Block getBlocks()
+>>>>>>> remotes/origin/DEV
   {
     blocks = null;
     largestBlock = null;
@@ -67,10 +92,14 @@ public class PixySub extends SubsystemBase {
         }
       }
     }
+<<<<<<< HEAD
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+=======
+    return largestBlock;
+>>>>>>> remotes/origin/DEV
   }
 }

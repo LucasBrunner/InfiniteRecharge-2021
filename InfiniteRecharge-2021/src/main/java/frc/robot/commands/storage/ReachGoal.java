@@ -41,9 +41,17 @@ public class ReachGoal extends CommandBase {
     }
     double power = PID.calculate(StorageSub.getEncoderPosition());
 
+<<<<<<< HEAD
     StorageSub.storagePower(power);
   }
 
+=======
+    StorageSub.storagePower(power * powerFun);
+  }
+
+  static double powerFun = 1;
+
+>>>>>>> remotes/origin/DEV
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {

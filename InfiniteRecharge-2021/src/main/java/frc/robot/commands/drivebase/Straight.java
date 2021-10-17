@@ -15,8 +15,11 @@ import frc.robot.subsystems.DriveSub;
 
 public class Straight extends CommandBase
 {
+<<<<<<< HEAD
   private DriveSub driveSub = RobotContainer.driveSub;
 
+=======
+>>>>>>> remotes/origin/DEV
   // Sensor zero values
   private double lefttEncoderZero;
   private double rightEncoderZero;
@@ -34,11 +37,19 @@ public class Straight extends CommandBase
   // Power values
   private double drive;
   private double turn;
+<<<<<<< HEAD
 
   private Timer settlingTime = new Timer(500);
   
   public Straight(double inchDistance) {
     addRequirements(driveSub);
+=======
+  
+  private Timer settlingTime = new Timer(500);
+  
+  public Straight(double inchDistance) {
+    addRequirements(RobotContainer.driveSub);
+>>>>>>> remotes/origin/DEV
     drivePID.setSetpoint(inchDistance);
     turnPID.setSetpoint(0);
   }
@@ -59,11 +70,19 @@ public class Straight extends CommandBase
     drive = (lefttEncoder() + rightEncoder()) / 2;
     drive *= 0.01;
     drive = drivePID.calculate(drive);
+<<<<<<< HEAD
 
     turn = gyroAngle();
     turn *= 0.01;
     turn = turnPID.calculate(turn);
 
+=======
+    
+    turn = gyroAngle();
+    turn *= 0.01;
+    turn = turnPID.calculate(turn);
+    
+>>>>>>> remotes/origin/DEV
     DriveSub.arcadeDrive(drive, turn);
   }
   
@@ -81,7 +100,12 @@ public class Straight extends CommandBase
     if (turn < 0.05 && drive < 0.05 && settlingTime.done())
     {
       output = true;
+<<<<<<< HEAD
     } else {
+=======
+    } else
+    {
+>>>>>>> remotes/origin/DEV
       settlingTime.reset();
     }
     return output;

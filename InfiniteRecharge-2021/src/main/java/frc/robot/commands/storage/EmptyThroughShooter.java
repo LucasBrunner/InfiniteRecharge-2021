@@ -7,7 +7,13 @@
 
 package frc.robot.commands.storage;
 
+<<<<<<< HEAD
 import edu.wpi.first.wpilibj2.command.CommandBase;
+=======
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.classes.Timer;
+>>>>>>> remotes/origin/DEV
 import frc.robot.comcon.Intake;
 import frc.robot.commands.intake.Run;
 import frc.robot.commands.shooter.EmptyStorage;
@@ -28,7 +34,13 @@ public class EmptyThroughShooter extends CommandBase {
   @Override
   public void initialize() {
     Intake.stop();
+<<<<<<< HEAD
     StorageSub.setGoal(StorageSub.getGoal() + 6);
+=======
+    ReachGoal.powerFun = 0.5;
+    StorageSub.setGoal(StorageSub.getGoal() + 6);
+    forceEnd.reset();
+>>>>>>> remotes/origin/DEV
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -37,6 +49,12 @@ public class EmptyThroughShooter extends CommandBase {
     StorageSub.setFeederMotor(-0.75);
   }
 
+<<<<<<< HEAD
+=======
+  Timer forceEnd = new Timer(5000);
+  public static boolean resumeStorage = false;
+
+>>>>>>> remotes/origin/DEV
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
@@ -45,7 +63,12 @@ public class EmptyThroughShooter extends CommandBase {
     AutoShooter.FinishedShooting = true;
     TrackOuterGoal.FinishedShooting = true;
     EmptyStorage.finishedShooting = true;
+<<<<<<< HEAD
     Run.doStorage.set(true);
+=======
+    Run.doStorage.set(resumeStorage);
+    ReachGoal.powerFun = 1;
+>>>>>>> remotes/origin/DEV
   }
 
   // Returns true when the command should end.
@@ -55,6 +78,10 @@ public class EmptyThroughShooter extends CommandBase {
 
     if ((int) StorageSub.getGoal() == (int) StorageSub.getEncoderPosition()) { output = true; }
 
+<<<<<<< HEAD
     return output;
+=======
+    return output || forceEnd.done();
+>>>>>>> remotes/origin/DEV
   }
 }

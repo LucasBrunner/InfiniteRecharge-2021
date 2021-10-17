@@ -7,6 +7,11 @@
 
 package frc.robot;
 
+<<<<<<< HEAD
+=======
+import javax.swing.text.StyledEditorKit.BoldAction;
+
+>>>>>>> remotes/origin/DEV
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,6 +22,10 @@ import frc.robot.classes.Timer;
 import frc.robot.comcon.Climber;
 import frc.robot.comcon.Intake;
 import frc.robot.comcon.Shooter;
+<<<<<<< HEAD
+=======
+import frc.robot.commands.intake.Run;
+>>>>>>> remotes/origin/DEV
 import frc.robot.commands.shooter.EmptyStorage;
 import frc.robot.commands.shooter.SimpleShoot;
 import frc.robot.commands.vision.AutoShooter;
@@ -84,6 +93,11 @@ public class Robot extends TimedRobot {
     {
       System.out.println("Auto mode = " + doAuto.state());
     }
+<<<<<<< HEAD
+=======
+
+    SmartDashboard.putNumber("Arm position", IntakeSub.getPos());
+>>>>>>> remotes/origin/DEV
   }
 
   /**
@@ -93,6 +107,10 @@ public class Robot extends TimedRobot {
   public void disabledInit() {
     Intake.stop();
     testMode = false;
+<<<<<<< HEAD
+=======
+    SmartDashboard.putData(switchLEDs);
+>>>>>>> remotes/origin/DEV
   }
 
   @Override
@@ -149,8 +167,17 @@ public class Robot extends TimedRobot {
     Intake.run();
     ClimbSub.teleopStart();
     ClimbSub.stow();
+<<<<<<< HEAD
     // 
     Intake.deploy();
+=======
+    // Intake.deploy();
+
+    if (OI.advancedMode())
+    {
+      Shooter.toggleAutoShooter();
+    }
+>>>>>>> remotes/origin/DEV
   }
 
   /**
@@ -158,6 +185,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> remotes/origin/DEV
     if (Climber.deployLiftarm.isScheduled() == false) {
       IntakeSub.intakeControl();
       StorageSub.storageControl();
@@ -172,12 +203,23 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putData(emptyStorage);
     SmartDashboard.putNumber("Limelight X", LimelightSub.getHorOffset());
+<<<<<<< HEAD
     
+=======
+    SmartDashboard.putNumber("Limelight Y", LimelightSub.getVerOffset());
+    SmartDashboard.putBoolean("Do storage", Run.doStorage.state());
+    
+    /*
+>>>>>>> remotes/origin/DEV
     SmartDashboard.putData(Climber.deployLiftarm);
     if (OI.deployLifer() && OI.advancedMode())
     {
       Climber.deploy();
     }
+<<<<<<< HEAD
+=======
+    */
+>>>>>>> remotes/origin/DEV
   }
 
   private SimpleShoot soot = new SimpleShoot();

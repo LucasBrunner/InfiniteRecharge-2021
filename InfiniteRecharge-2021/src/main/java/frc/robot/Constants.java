@@ -19,8 +19,8 @@ public final class Constants
 {
     public enum encoderLimits
     {
-          intakeDown (-3300)
-        , intakeUp (2150);
+          intakeDown (-1770)
+        , intakeUp (3680); // These are 5450 apart
 
         double limit;
 

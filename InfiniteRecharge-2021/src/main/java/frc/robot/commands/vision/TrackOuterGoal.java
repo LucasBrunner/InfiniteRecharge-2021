@@ -31,16 +31,26 @@ public class TrackOuterGoal extends CommandBase {
 
   private double power = 0;
 
+<<<<<<< HEAD
   private DriveSub driveSub = RobotContainer.driveSub;
 
+=======
+>>>>>>> remotes/origin/DEV
   /**
    * Creates a new TrackOuterGoal.
    */
   public TrackOuterGoal() {
+<<<<<<< HEAD
     addRequirements(driveSub);
 
     steeringPID.setSetpoint(0);
     steeringPID.setTolerance(2);
+=======
+    addRequirements(RobotContainer.driveSub);
+
+    steeringPID.setSetpoint(0);
+    steeringPID.setTolerance(3);
+>>>>>>> remotes/origin/DEV
     steeringPID.setIntegratorRange(-0.1, 0.1);
   }
 
